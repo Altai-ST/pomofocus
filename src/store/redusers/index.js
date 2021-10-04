@@ -1,11 +1,16 @@
 import React from "react";
+import { TIMER_TURN } from "../actions";
+
 const initialState ={
-    times = []
+    times = false
 }
 
 export const TimeManage =(state = initialState, action)=>{
-        switch(action){
-            case SWITCH_TIMER:
-                 
+        switch(action.type){
+            case TIMER_TURN:
+                return{
+                    ...state,
+                    times: action.bool,
+                }
         }
 }
