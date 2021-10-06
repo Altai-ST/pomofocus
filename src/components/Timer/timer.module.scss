@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.containerTimer{
+    width: auto;
+    max-height: 320px;
+    display: flex;
+    justify-content: center;
+}
+.pomodoros{
+    background-color: #FFFFFF4D;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+.timer{
+    font-size: 120px;
+    color: #ffff;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.timerBtnGroub{
+    margin: 40px auto 0;
+}
+
+.start{
+    font-family: 'Montserrat', sans-serif;
+    margin: 14px auto 40px;
+    width: 150px;
+    height: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 6px;
+    border:none;
+    background-color: #ffff;
+    z-index: 1;
+}
+
+.pomodoro{
+    color: #DB524D;
+    z-index: 1;
+}
+.short-break{
+    color: #468E91;
+    z-index: 1;
+}
+
+.long-break{
+    color: #437EA8;
+    z-index: 1;
+}

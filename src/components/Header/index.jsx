@@ -1,12 +1,17 @@
 import React from 'react'
+import styless from './Header.module.scss'
+import {ButtonHead} from './Button/index'
+
 
 export const Header =()=>{
     return(
         <div>
-            <nav>
+            <nav className={styless.header}>
                 <h1>Pomofocus</h1>
-                <button>Settings</button>
-                <button>Report</button>
+                <div>
+                    <ButtonHead title='Setting'/>
+                    <ButtonHead title='Report'/>
+                </div>
             </nav>
         </div>
     )

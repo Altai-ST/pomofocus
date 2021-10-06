@@ -1,16 +1,29 @@
-import React from "react";
-import { TIMER_TURN } from "../actions";
+import { BACK_SWITCH, SHOW_SETTING, SWITCH } from "../actions"
 
 const initialState ={
-    times = false
+    pomodoroState: "pomodoro",
+    switchTime: false,
+    show: false
 }
 
 export const TimeManage =(state = initialState, action)=>{
         switch(action.type){
-            case TIMER_TURN:
+            case BACK_SWITCH:
                 return{
                     ...state,
-                    times: action.bool,
+                    pomodoroState: action.color
                 }
+            case SWITCH:
+                return{
+                    ...state,
+                    switchTime: action.bool
+                }
+            case SHOW_SETTING:
+                console.log(action.show)
+                return{
+                    ...state,
+                    show: action.show
+                }
+            default: return state
         }
 }
