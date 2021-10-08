@@ -1,42 +1,41 @@
-.pomodoro{
+%allBtn{
     width: 115px;
     padding: 5px 0;
-    background-color: rgba(255, 255, 255, 0);
     border:none;
     font-size: 16px;
     color: #fff;
-    font-weight: bold;
-}
-
-.pomodoro:active{
-    background-color: rgba(219, 82, 77, 0.5);
+    font-weight: bold; 
     border-radius: 6px;
 }
 
-.short-break{
-    width: 115px;
-    padding: 5px 0;
+
+.pomoBtn{
+    @extend %allBtn;
     background-color: rgba(255, 255, 255, 0);
-    border:none;
-    font-size: 16px;
-    color: #fff;
-    font-weight: bold;
 }
 
-.short-break:active{
-    background-color: #468E91;
-    border-radius: 6px;
+.pomoB{
+    @extend %allBtn;
+    background-color: #DB524D80;
 }
-.long-break{
-    width: 115px;
-    padding: 5px 0;
+
+.short{
+    @extend %allBtn;
+    background-color: rgba(255, 255, 255, 0); 
+}
+
+.shortB{
+    @extend %allBtn;
+    background-color: #4C8385;
+}
+
+
+.long{
+    @extend %allBtn;
     background-color: rgba(255, 255, 255, 0);
-    border:none;
-    font-size: 16px;
-    color: #fff;
-    font-weight: bold;
 }
-.long-break:active{
-    background-color: #437EA8;
-    border-radius: 6px;
+
+.longB{
+    @extend %allBtn;
+    background-color: #497697;
 }
