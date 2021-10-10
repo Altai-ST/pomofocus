@@ -1,4 +1,11 @@
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import { TimeManage } from './reducers'
-export let store = createStore(TimeManage)
+import { reducer as formReducer } from 'redux-form'
+
+const reducers = combineReducers({
+    TimeManage,
+    form: formReducer,
+})
+
+export let store = createStore(reducers)
 

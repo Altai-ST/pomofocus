@@ -1,8 +1,8 @@
 import React from "react";
 import styless from './Button.module.scss'
 
-export const ButtonHead = ({title})=>{
+export const ButtonHead = ({title, onClick})=>{
         return(
-            <button className={styless.btn}>{title}</button>
+            <button onClick={()=>onClick(true)} className={styless.btn}>{title}</button>
         )
 }

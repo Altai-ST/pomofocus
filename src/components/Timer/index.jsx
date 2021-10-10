@@ -6,7 +6,7 @@ import TimerFunc from "../../containers/TimerFunc";
 import { useSelector } from "react-redux";
 
 export const Timer =()=>{
-    const pomoState = useSelector(state => state.pomodoroState)
+    const pomoState = useSelector(state => state.TimeManage.pomodoroState)
     return(
         <div className={styless.containerTimer}>
             <div className={styless.pomodoros}>

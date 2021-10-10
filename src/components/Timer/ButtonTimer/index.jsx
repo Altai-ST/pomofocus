@@ -5,7 +5,7 @@ import { timerTurn } from "../../../store/actions";
 import style from './ButtonTimer.module.scss'
 export const ButtonTimer =({color, title, pomodoro})=>{
     const dispatch = useDispatch()
-    const setPomodoro = useSelector(state=>state.pomodoroState)
+    const setPomodoro = useSelector(state=>state.TimeManage.pomodoroState)
     if(setPomodoro === 'pomodoro' && title ==='Pomodoro'){
         let pomoB = 'pomoB'
         return (

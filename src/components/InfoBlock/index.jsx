@@ -1,8 +1,9 @@
 import React from "react";
+import './infoBlock.css'
 
 export const InfoBlock=()=>{
     return(
-        <div className='Main-block'>
+        <div className='MainBlock'>
             <h1>An online Pomodoro Timer to boost your productivity</h1>
             <div>
                 <h2>What is Pomofocus?</h2>
