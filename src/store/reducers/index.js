@@ -3,7 +3,7 @@ import { SETTING } from "../actionType"
 
 const initialState ={
     pomodoroState: "pomodoro",
-    timerMinute:{Pomo: 25, ShortBreak:5, LongBreak:10}
+    timerMinute:{Pomo: 25, ShortBreak:5, LongBreak:10, AutoPomo:false, AutoBreak: false}
 }
 
 export const TimeManage =(state = initialState, action)=>{
@@ -15,6 +15,7 @@ export const TimeManage =(state = initialState, action)=>{
                     pomodoroState: action.color,
                 }
             case SETTING:
+                console.log(action.payload)
                 return{
                     ...state,
                     timerMinute: action.payload

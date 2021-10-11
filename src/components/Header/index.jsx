@@ -10,6 +10,8 @@ export const Header =()=>{
     const [pomo, setPomo]=useState(0)
     const [short, setShort]=useState(0)
     const [long, setLong]=useState(0)
+    const [autoPomo, setAutoPomo]=useState(false)
+    const [autoBreak, setAutoBreak]=useState(false)
     const state = useSelector(state=> state.TimeManage.timerMinute)
 
     useEffect(()=>{
@@ -32,6 +34,14 @@ export const Header =()=>{
         }
     }
 
+    const autoStartPomo=(val)=>{
+        setAutoPomo(val)
+    }
+
+    const autoStartBreak=(val)=>{
+        setAutoBreak(val)
+    }
+
     return(
         <div>
             <nav className={styless.header}>
@@ -48,6 +58,10 @@ export const Header =()=>{
                 short={short} 
                 pomo={pomo}
                 long={long}
+                autoStartPomo={autoStartPomo}
+                autoStartBreak={autoStartBreak}
+                autoPomo={autoPomo}
+                autoBreak={autoBreak}
             />
         </div>
     )

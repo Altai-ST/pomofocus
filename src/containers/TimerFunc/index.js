@@ -25,32 +25,25 @@ const TimerFunc =({classes, time})=>{
     }
 
     useEffect(()=>{
-            if(time === 'pomodoro'){
-            setMinute(setTimer.Pomo)
-            setSeconds(0)
-            if (intervalId) {
-                clearInterval(intervalId);
-                setIntervalId(0);
-                return;
+        if(time === 'pomodoro'){
+            setMinute(setTimer.Pomo>1 ? setTimer.Pomo : 0)
+            setSeconds(setTimer.Pomo<1 ? setTimer.Pomo*60 : 0)
+            if(setTimer.AutoPomo){
+                handleStart()
             }
-            
         }else if(time === 'short-break'){
-            setSeconds(0)
-            setMinute(setTimer.ShortBreak)
-            if (intervalId) {
-                clearInterval(intervalId);
-                setIntervalId(0);
-                return;
+            setMinute(setTimer.ShortBreak>1 ? setTimer.ShortBreak : 0)
+            setSeconds(setTimer.ShortBreak<1 ? setTimer.ShortBreak*60: 0)
+            if(setTimer.AutoBreak){
+              handleStart()  
+            }
+        }else{
+            setMinute(setTimer.LongBreak>1 ? setTimer.LongBreak : 0)
+            setSeconds(setTimer.LongBreak<1 ? setTimer.LongBreak*60 : 0)
+            if(setTimer.AutoBreak){
+                handleStart()
             }
             
-        }else{
-            setSeconds(0)
-            setMinute(setTimer.LongBreak)
-            if (intervalId) {
-                clearInterval(intervalId);
-                setIntervalId(0);
-                return;
-            }
         }
         
     },[time, setTimer])
@@ -60,7 +53,7 @@ const TimerFunc =({classes, time})=>{
             setSeconds(59)
             setMinute(minute=>minute-1)
         }
-        if(minute == 0 & seconds == 0){
+        if(minute === 0 & seconds === 0){
             console.log('hi')
             if(backStart === 'pomodoro'){
                 dispatch(timerTurn('short-break'))

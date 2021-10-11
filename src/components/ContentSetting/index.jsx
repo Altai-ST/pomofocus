@@ -3,10 +3,30 @@ import { useSelector } from "react-redux";
 import {BaseSettings} from "../../containers/Settings";
 import './modal.scss'
 
-export const ContentSetting=({show, onClose, hadleOnChange, pomo, short, long})=>{
+export const ContentSetting=(
+    {
+        show, 
+        onClose, 
+        hadleOnChange, 
+        pomo, 
+        short, 
+        long, 
+        autoStartPomo, 
+        autoPomo, 
+        autoStartBreak,
+        autoBreak
+    })=>{
     return(
         <>
-            <BaseSettings show={show} onClose={onClose} pomo={pomo} short={short} long={long}>
+            <BaseSettings 
+                show={show} 
+                onClose={onClose} 
+                pomo={pomo} 
+                short={short} 
+                long={long} 
+                autoPomo={autoPomo}
+                autoBreak={autoBreak}
+            >
                 <div className='headTitle'>
                     <h2>Timer Setting</h2>
                 </div>
@@ -31,12 +51,12 @@ export const ContentSetting=({show, onClose, hadleOnChange, pomo, short, long})=
                 <hr />
                 <div>
                     <p>Auto start Breaks?</p>
-                    <button></button>
+                    <button onClick={()=>autoStartBreak(!autoBreak)}>{autoBreak ? 'On' : 'Off'}</button>
                 </div>
                 <hr />
                 <div>
                     <p>Auto start Pomodoros?</p>
-                    <button></button>
+                    <button onClick={()=>autoStartPomo(!autoPomo)}>{autoPomo ? 'On' : 'Off'}</button>
                 </div>
                 <hr />
                 <div>
