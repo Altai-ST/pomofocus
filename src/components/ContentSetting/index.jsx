@@ -1,14 +1,12 @@
 import React from "react";
-import { Field } from "redux-form";
-import BaseSettings, { SetSetting } from "../../containers/Settings";
-import { Input } from "./input";
+import { useSelector } from "react-redux";
+import {BaseSettings} from "../../containers/Settings";
 import './modal.scss'
 
-export const ContentSetting=({show, onClose})=>{
-    console.log(show)
+export const ContentSetting=({show, onClose, hadleOnChange, pomo, short, long})=>{
     return(
         <>
-            <SetSetting show={show} onClose={onClose}>
+            <BaseSettings show={show} onClose={onClose} pomo={pomo} short={short} long={long}>
                 <div className='headTitle'>
                     <h2>Timer Setting</h2>
                 </div>
@@ -18,24 +16,15 @@ export const ContentSetting=({show, onClose})=>{
                     <div className='firstBlock'>
                         <div>
                             <p>Pomodoro</p>
-                            <Field 
-                                name='Pomo'
-                                component={Input}
-                            />
+                            <input type="text" name='Pomo' value={pomo} onChange={(e)=>hadleOnChange(e)}/>
                         </div>
                         <div>
                             <p >Short Break</p>
-                            <Field 
-                                name='ShortBreak'
-                                component={Input}
-                            />
+                            <input type="text" name='ShortBreak' value={short} onChange={(e)=>hadleOnChange(e)} />
                         </div>
                         <div>
                             <p>Long Break</p>
-                            <Field
-                                name='LongBreak'
-                                component={Input}
-                            />
+                            <input type="text" name='LongBreak' value={long} onChange={(e)=>hadleOnChange(e)} />
                         </div>
                     </div>
                 </div>
@@ -55,7 +44,7 @@ export const ContentSetting=({show, onClose})=>{
                     <input type="text" />
                 </div>
                 <hr />
-            </SetSetting>
+            </BaseSettings>
         </>
     )
 }

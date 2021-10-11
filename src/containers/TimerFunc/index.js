@@ -5,21 +5,12 @@ import SwitchState from "../SwitchState";
 
 const TimerFunc =({classes, time})=>{
     const backStart = useSelector(state=>state.TimeManage.pomodoroState)
-    const setPomo = useSelector(state=>state.TimeManage.mass)
-    let count=0;
-    if(setPomo != []){
-        setPomo.map((el)=>{
-            return count=el[0].Pomo
-        })
-    }
+    const setTimer = useSelector(state=>state.TimeManage.timerMinute)
+
     const dispatch = useDispatch()
-    const [minute, setMinute] = useState(25);
+    const [minute, setMinute] = useState(setTimer.Pomo);
     const [seconds, setSeconds] = useState(0);
     const [intervalId, setIntervalId] = useState(0);
-
-    if(!setPomo){
-        console.log('hi')
-    }
 
     const handleStart =()=>{
         if (intervalId) {
@@ -34,9 +25,8 @@ const TimerFunc =({classes, time})=>{
     }
 
     useEffect(()=>{
-        if(count == 0){
             if(time === 'pomodoro'){
-            setMinute(25)
+            setMinute(setTimer.Pomo)
             setSeconds(0)
             if (intervalId) {
                 clearInterval(intervalId);
@@ -46,7 +36,7 @@ const TimerFunc =({classes, time})=>{
             
         }else if(time === 'short-break'){
             setSeconds(0)
-            setMinute(5)
+            setMinute(setTimer.ShortBreak)
             if (intervalId) {
                 clearInterval(intervalId);
                 setIntervalId(0);
@@ -55,49 +45,15 @@ const TimerFunc =({classes, time})=>{
             
         }else{
             setSeconds(0)
-            setMinute(10)
+            setMinute(setTimer.LongBreak)
             if (intervalId) {
                 clearInterval(intervalId);
                 setIntervalId(0);
                 return;
             }
         }
-        }
         
-    },[time || count])
-
-    useEffect(()=>{
-        if(count > 0){
-            console.log(count)
-            if(time === 'pomodoro'){
-                setMinute(25 * count)
-                setSeconds(0)
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    setIntervalId(0);
-                    return;
-                }
-                
-            }else if(time === 'short-break'){
-                setSeconds(0)
-                setMinute(5)
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    setIntervalId(0);
-                    return;
-                }
-                
-            }else{
-                setSeconds(0)
-                setMinute(10)
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    setIntervalId(0);
-                    return;
-                }
-            }
-        }
-    },[count])
+    },[time, setTimer])
 
     useEffect(()=>{
         if(seconds < 0){
