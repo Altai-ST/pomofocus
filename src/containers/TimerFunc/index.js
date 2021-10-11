@@ -43,7 +43,6 @@ const TimerFunc =({classes, time})=>{
             if(setTimer.AutoBreak){
                 handleStart()
             }
-            
         }
         
     },[time, setTimer])
@@ -57,10 +56,13 @@ const TimerFunc =({classes, time})=>{
             console.log('hi')
             if(backStart === 'pomodoro'){
                 dispatch(timerTurn('short-break'))
+                handleStart()
             }else if(backStart ==='short-break'){
                 dispatch(timerTurn('long-break'))
+                handleStart()
             }else{
                 dispatch(timerTurn('pomodoro'))
+                handleStart()
             }
         }
     },[seconds])
