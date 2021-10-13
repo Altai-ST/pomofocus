@@ -1,21 +1,26 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { timerTurn } from "../../store/actions";
-import SwitchState from "../SwitchState";
+import { Checking, timerTurn } from "../../store/actions";
 
-const TimerFunc =({classes, time})=>{
-    const backStart = useSelector(state=>state.TimeManage.pomodoroState)
+let count = 0
+const TimerFunc =({classes})=>{
+    const pomodoroState = useSelector(state=>state.TimeManage.pomodoroState)
     const setTimer = useSelector(state=>state.TimeManage.timerMinute)
-
     const dispatch = useDispatch()
     const [minute, setMinute] = useState(setTimer.Pomo);
     const [seconds, setSeconds] = useState(0);
-    const [intervalId, setIntervalId] = useState(0);
-
-    const handleStart =()=>{
+    const [intervalId, setIntervalId] = useState(null);
+    const clearTimer = () => {
         if (intervalId) {
             clearInterval(intervalId);
-            setIntervalId(0);
+            setIntervalId(null);
+            return;
+        }
+    }
+    const handleStart = ()=>{
+        if (intervalId) {
+            clearInterval(intervalId);
+            setIntervalId(null);
             return;
         }
         const newIntervalId = setInterval(() => {
@@ -25,55 +30,65 @@ const TimerFunc =({classes, time})=>{
     }
 
     useEffect(()=>{
-        if(time === 'pomodoro'){
-            setMinute(setTimer.Pomo>1 ? setTimer.Pomo : 0)
-            setSeconds(setTimer.Pomo<1 ? setTimer.Pomo*60 : 0)
-            if(setTimer.AutoPomo){
+        if(pomodoroState === 'pomodoro'){
+            setMinute(setTimer.Pomo)
+            setSeconds(0)
+            if(setTimer.AutoPomo){ //00:01
                 handleStart()
             }
-        }else if(time === 'short-break'){
-            setMinute(setTimer.ShortBreak>1 ? setTimer.ShortBreak : 0)
-            setSeconds(setTimer.ShortBreak<1 ? setTimer.ShortBreak*60: 0)
+        }else if(pomodoroState === 'short-break'){
+            setMinute(setTimer.ShortBreak)
+            setSeconds(0)
             if(setTimer.AutoBreak){
               handleStart()  
             }
         }else{
-            setMinute(setTimer.LongBreak>1 ? setTimer.LongBreak : 0)
-            setSeconds(setTimer.LongBreak<1 ? setTimer.LongBreak*60 : 0)
+            setMinute(setTimer.LongBreak)
+            setSeconds(0)
             if(setTimer.AutoBreak){
                 handleStart()
             }
         }
         
-    },[time, setTimer])
+    },[pomodoroState, setTimer])
 
+    const onNext=()=>{
+        setMinute(0)
+        setSeconds(0)
+    }
     useEffect(()=>{
+        dispatch(Checking(seconds))
         if(seconds < 0){
             setSeconds(59)
             setMinute(minute=>minute-1)
         }
         if(minute === 0 & seconds === 0){
-            console.log('hi')
-            if(backStart === 'pomodoro'){
+            clearTimer()
+            if(pomodoroState === 'pomodoro'){
+                count++
                 dispatch(timerTurn('short-break'))
-                handleStart()
-            }else if(backStart ==='short-break'){
+            }else if(pomodoroState === 'short-break' && count === Number(setTimer.Interval)){
+                count=0
                 dispatch(timerTurn('long-break'))
-                handleStart()
-            }else{
+            }else if(pomodoroState === 'short-break' && count !== Number(setTimer.Interval)){
                 dispatch(timerTurn('pomodoro'))
-                handleStart()
+            }else if(pomodoroState === 'long-break'){
+                dispatch(timerTurn('pomodoro'))
             }
         }
-    },[seconds])
+    },[seconds, minute])
 
     return(
         <>
             <div className={classes.timer}>{minute}:{seconds < 10 ? '0'+seconds : seconds}</div>
-            <button onClick={()=>handleStart()} className={classes.start}>
-                <span className={classes[backStart+'Btn']}>{intervalId ? 'STOP' : 'START'}</span> 
-            </button>
-            {/* <SwitchState states={time}/> */}
+            
+            <div className={classes.timerBtn}>
+                <button onClick={()=>handleStart()} className={intervalId ? classes.stop : classes.start}>
+                    <span className={classes[pomodoroState+'Btn']}>{intervalId ? 'STOP' : 'START'}</span> 
+                </button>
+                <button onClick={onNext} className={classes.next}>Next</button>
+            </div>
+            
         </>
     )
 }

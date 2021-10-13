@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import './assets/styles/App.scss'
 import { Timer } from './components/Timer';
 import { InfoBlock } from './components/InfoBlock';
+import LineTimer from './containers/LineTimer';
+import { Footer } from './components/Footer';
 
 
 function App() {
@@ -13,11 +15,13 @@ function App() {
         <div className='container'>
           <div>
             <Header/>
+            <LineTimer/>
             <Timer/>
           </div>
         </div>
       </div>
       <InfoBlock/>
+      <Footer/>
     </div>
     
   );

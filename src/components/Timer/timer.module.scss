@@ -25,7 +25,9 @@
     margin: 40px auto 0;
 }
 
-.start{
+
+
+.stop{
     font-family: 'Montserrat', sans-serif;
     margin: 14px auto 40px;
     width: 150px;
@@ -37,6 +39,20 @@
     background-color: #ffff;
 }
 
+.start{
+    font-family: 'Montserrat', sans-serif;
+    margin: 14px auto 40px;
+    width: 150px;
+    height: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 6px;
+    border:none;
+    background-color: #ffff;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+
 .pomodoroBtn{
     color: #DB524D;
 }
@@ -47,4 +63,19 @@
 
 .long-breakBtn{
     color: #437EA8;
+}
+
+.timerBtn{
+    width: 450px;
+    margin:0 0 0 150px;
+}
+
+.next{
+    margin-left: 50px;
+    width: 69px;
+    height: 49px;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
 }
