@@ -86,7 +86,7 @@ const TimerFunc =({classes})=>{
                 <button onClick={()=>handleStart()} className={intervalId ? classes.stop : classes.start}>
                     <span className={classes[pomodoroState+'Btn']}>{intervalId ? 'STOP' : 'START'}</span> 
                 </button>
-                <button onClick={onNext} className={classes.next}>Next</button>
+                { intervalId && <button onClick={onNext} className={classes.next}>Next</button>}
             </div>
             
         </>
