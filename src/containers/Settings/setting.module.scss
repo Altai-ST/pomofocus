@@ -1,0 +1,30 @@
+.modalContainer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .4);
+    top: 0;
+    left: 0;
+}
+
+.modalWindow{
+    background: #fff;
+    width: 480px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 40px;
+    border-radius: 8px; 
+    max-height: 520px;
+}
+
+.modalCloses{
+    margin-left: 440px;
+    width: 12px;
+    padding: 0;
+    height: 12px;
+    background-color: #fff;
+    border: none;
+    color: #BCBCBC;
+    padding-top: 20px;
+}

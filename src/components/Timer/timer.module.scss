@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.containerTimer{
+    width: auto;
+    max-height: 320px;
+    display: flex;
+    justify-content: center;
+}
+.pomodoros{
+    background-color: #FFFFFF4D;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+.timer{
+    font-size: 120px;
+    color: #ffff;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.timerBtnGroub{
+    margin: 40px auto 0;
+}
+
+
+
+.stop{
+    font-family: 'Montserrat', sans-serif;
+    margin: 14px auto 40px;
+    width: 150px;
+    height: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 6px;
+    border:none;
+    background-color: #ffff;
+}
+
+.start{
+    font-family: 'Montserrat', sans-serif;
+    margin: 14px auto 40px;
+    width: 150px;
+    height: 60px;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 6px;
+    border:none;
+    background-color: #ffff;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.pomodoroBtn{
+    color: #DB524D;
+}
+
+.short-breakBtn{
+    color: #468E91;
+}
+
+.long-breakBtn{
+    color: #437EA8;
+}
+
+.timerBtn{
+    width: 450px;
+    margin:0 0 0 150px;
+}
+
+.next{
+    margin-left: 50px;
+    width: 69px;
+    height: 49px;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
